@@ -18,8 +18,8 @@
 .App-header {
   
     background-color: rgb(26, 26, 33);
-    position: fixed;
-    padding-left: 20%;
+    padding: 80px;
+    padding-top: 0px;
   
   
 }
