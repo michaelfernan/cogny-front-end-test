@@ -3,9 +3,19 @@
     "name": "mobile",
     "slug": "mobile",
     "version": "1.0.0",
+    "ios": {
+      "buildNumber": "1",
+      "bundleIdentifier": "com.cogny.mobile",
+      "supportsTablet": true
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "30158c37-e8c4-4c40-8cef-740bd3c967ae"
+      }
+    }
   },
   "name": "mobile"
 }
