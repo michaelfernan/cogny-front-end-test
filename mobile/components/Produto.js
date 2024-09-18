@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A21',
     paddingTop: 20,
   },
-
+  
   card: {
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     width: 338,
     height: 358,
-
+  },
+  
   imagemProduto: {
     width: 200,
     height: 200,
@@ -50,19 +51,19 @@ const styles = StyleSheet.create({
   },
   
   descricao: {
-    fontSize: 16,
-    color: '#333',
-    
-  },
-
-  preco: {
-    fontSize: 21,
-    color: '#000',
+    fontSize: 16,  
     marginTop: 8,
-    fontWeight: 'bold',
-    textAlign: 'left',
+    color: '#333',
+     
   },
- 
+  
+  preco: {
+    fontSize: 21,  
+    color: '#000',  
+    marginTop: 8,
+    fontWeight: 'bold', 
+    textAlign: 'left', 
+  },
   adicionarArea: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -71,32 +72,32 @@ const styles = StyleSheet.create({
   },
   quantidadeContainer: {
     position: 'absolute',
-    left: 0,
-    zIndex:100,
+    left: 0,  
+    zIndex:100, 
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
     borderRadius: 4,
-    width: 81,
-    height: 42,
+    width: 81, 
+    height: 42, 
     alignItems: 'center',
     paddingTop:10,
   },
-  quantidade: {
+  quantidade: { 
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#FFFFFF', 
   },
- 
+
   botaoAdicionar: {
-    backgroundColor: '#F8375D',
-    width: 307,
-    height: 42,
+    backgroundColor: '#F8375D',  
+    width: 307, 
+    height: 42,  
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,
   },
-
+  
   textoBotao: {
-    color: '#fff',
+    color: '#fff', 
     fontSize: 14,
     fontWeight: 'bold',
   },
