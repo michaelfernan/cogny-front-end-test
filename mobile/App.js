@@ -7,7 +7,7 @@ import ProductList from './components/ProductList';
 import Carrinho from './components/Carrinho';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa o AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 
@@ -15,7 +15,6 @@ export default function App() {
   const [produtos, setProdutos] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
 
-  // Função para buscar produtos do Firebase
   const fetchProdutos = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'produtos'));
@@ -26,7 +25,6 @@ export default function App() {
     }
   };
 
-  // Função para carregar os itens do carrinho do AsyncStorage
   const loadCarrinho = async () => {
     try {
       const savedCarrinho = await AsyncStorage.getItem('carrinho');
@@ -44,57 +42,52 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // Atualiza o AsyncStorage sempre que o carrinho for alterado
+
     const salvarCarrinho = async () => {
       await AsyncStorage.setItem('carrinho', JSON.stringify(carrinho));
     };
     salvarCarrinho();
   }, [carrinho]);
 
-  // Função para adicionar item ao carrinho e salvar no AsyncStorage
+
   const adicionarAoCarrinho = async (produto) => {
     const produtoExistente = carrinho.find(item => item.id === produto.id);
 
     if (produtoExistente) {
       alert('Produto já está no carrinho');
     } else {
-      const novoProduto = { ...produto, quantidade: 1 }; // Adiciona quantidade inicial de 1
-      const novoCarrinho = [...carrinho, novoProduto];
+      const novoProduto = { ...produto, quantidade: 1 };
       setCarrinho(novoCarrinho);
     }
   };
 
-  // Função para alterar a quantidade de um item no carrinho
+
   const alterarQuantidade = async (id, quantidade) => {
     const novoCarrinho = carrinho.map(item => {
       if (item.id === id) {
-        return { ...item, quantidade: Math.max(quantidade, 1) }; // Garante que a quantidade seja no mínimo 1
+        return { ...item, quantidade: Math.max(quantidade, 1) };
       }
       return item;
     });
     setCarrinho(novoCarrinho);
   };
 
-  // Função para esvaziar o carrinho e limpar o AsyncStorage
+  
   const esvaziarCarrinho = async () => {
     setCarrinho([]);
-    await AsyncStorage.removeItem('carrinho'); // Remove o carrinho do AsyncStorage
+    await AsyncStorage.removeItem('carrinho');
   };
 
-
-
-  // Função para finalizar o pedido e exibir mensagem
 const finalizarPedido = async () => {
   alert('🎉 Pedido finalizado com sucesso! 🎉\nObrigado por comprar conosco!');
-  setCarrinho([]); // Esvazia o carrinho
-  await AsyncStorage.removeItem('carrinho'); // Limpa o AsyncStorage
+  setCarrinho([]);
+  await AsyncStorage.removeItem('carrinho');
 };
 
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* Remover a barra de navegação da tela Home */}
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <SafeAreaView style={styles.container}>
@@ -104,13 +97,13 @@ const finalizarPedido = async () => {
           )}
         </Stack.Screen>
         
-        {/* Tela de Carrinho */}
+    
         <Stack.Screen name="Carrinho" options={{ headerShown: false }}>
   {() => (
     <Carrinho
       carrinho={carrinho}
-      esvaziarCarrinho={esvaziarCarrinho} // Passando a função como prop
-      alterarQuantidade={alterarQuantidade} // Passa a função para alterar a quantidade
+      esvaziarCarrinho={esvaziarCarrinho}
+      alterarQuantidade={alterarQuantidade}
     />
   )}
 </Stack.Screen>

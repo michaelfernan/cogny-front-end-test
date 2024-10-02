@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App'; // Supondo que o App.js seja o arquivo principal
+import App from './App';
 
 const container = document.getElementById('root');
-const root = createRoot(container); // Cria a raiz usando a nova API
+const root = createRoot(container);
 root.render(<App />);
